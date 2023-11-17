@@ -1,4 +1,4 @@
-package HG_Dashboard
+package main
 
 import (
 	"github.com/gin-gonic/gin"
