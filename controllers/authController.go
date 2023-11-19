@@ -1,19 +1,16 @@
 package controllers
 
 import (
+	"HG-Dashboard/models"
 	"HG-Dashboard/utils"
 	"database/sql"
 	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
 	"net/http"
 )
 
-type LoginInfo struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
 func Login(c *gin.Context) {
-	var loginInfo LoginInfo
+	var loginInfo models.LoginInfo
 	if err := c.BindJSON(&loginInfo); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -30,10 +27,10 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	if storedPassword != loginInfo.Password {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid credentials"})
+	if err := bcrypt.CompareHashAndPassword([]byte(storedPassword), []byte(loginInfo.Password)); err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "login successful"})
+	c.JSON(http.StatusOK, gin.H{"message": "Login successful"})
 }

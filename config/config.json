@@ -1,0 +1,10 @@
+{
+  "database": {
+    "host": "1.117.68.247",
+    "port": 3306,
+    "username": "root",
+    "password": "ycyawCOM996.",
+    "dbname": "hg_dashboard",
+    "charset": "utf8"
+  }
+}
