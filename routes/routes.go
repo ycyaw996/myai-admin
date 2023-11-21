@@ -11,4 +11,5 @@ func SetupRoutes(router *gin.Engine) {
 	router.GET("/api/status", controllers.GetSystemStatus)
 	router.POST("/reset-password", controllers.ResetPassword)
 	router.POST("/api/add-agent", controllers.AddAgent)
+	router.GET("/api/get-all-agents", controllers.GetAllAgents)
 }
