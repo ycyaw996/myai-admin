@@ -80,3 +80,44 @@ func GetAllAgents(c *gin.Context) {
 	// 返回查询结果
 	c.JSON(http.StatusOK, gin.H{"agents": agents})
 }
+
+// DeleteAgent 删除agent
+func deleteAgentDatabase(agentId int) error {
+	utils.DB.Exec("DELETE FROM hg_agent_info WHERE agent_id = ?", agentId)
+	return nil
+}
+func DeleteAgent(c *gin.Context) {
+	var agentInfo models.AddAgentInfo
+	if err := c.BindJSON(&agentInfo); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	if err := deleteAgentDatabase(agentInfo.AgentId); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Database update failed"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Delete agent successful"})
+
+}
+
+// UpdateAgent 更新agent
+func updateAgentDatabase(agentId int, agentName, agentIp string) error {
+	utils.DB.Exec("UPDATE hg_agent_info SET agent_name = ?, agent_ip = ? WHERE agent_id = ?", agentName, agentIp, agentId)
+	return nil
+}
+func UpdateAgent(c *gin.Context) {
+	var agentInfo models.AddAgentInfo
+	if err := c.BindJSON(&agentInfo); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	if err := updateAgentDatabase(agentInfo.AgentId, agentInfo.AgentName, agentInfo.AgentIp); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Database update failed"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Update agent successful"})
+}
