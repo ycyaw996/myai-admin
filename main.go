@@ -19,7 +19,7 @@ func main() {
 	routes.SetupRoutes(router)
 
 	// 启动服务器
-	err := router.Run()
+	err := router.Run(":5484")
 	if err != nil {
 		return
 	}
