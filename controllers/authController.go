@@ -17,7 +17,7 @@ func Login(c *gin.Context) {
 	}
 
 	var storedPassword string
-	err := utils.DB.QueryRow("SELECT passwd FROM hg_user WHERE name = ?", loginInfo.Username).Scan(&storedPassword)
+	err := utils.DB.QueryRow("SELECT passwd FROM myai_user WHERE name = ?", loginInfo.Username).Scan(&storedPassword)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid credentials"})
