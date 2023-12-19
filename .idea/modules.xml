@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../HG-Agent/.idea/HG-Agent.iml" filepath="$PROJECT_DIR$/../HG-Agent/.idea/HG-Agent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/HG-Dashboard.iml" filepath="$PROJECT_DIR$/.idea/HG-Dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/myai-admin.iml" filepath="$PROJECT_DIR$/.idea/myai-admin.iml" />
     </modules>
   </component>
 </project>
