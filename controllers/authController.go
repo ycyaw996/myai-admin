@@ -54,3 +54,6 @@ func Login(c *gin.Context) {
 	// 将 Token 和用户角色发送回客户端
 	c.JSON(http.StatusOK, gin.H{"code": 20000, "token": tokenString, "role": userRole})
 }
+func Logout(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"code": 20000, "data": "success"})
+}
