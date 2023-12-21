@@ -20,7 +20,7 @@ func main() {
 	router.Use(cors.New(cors.Config{
 		AllowOrigins: []string{"http://localhost:9528"}, // 允许的源
 		AllowMethods: []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"},
-		AllowHeaders: []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
+		AllowHeaders: []string{"Origin", "Content-Length", "Content-Type", "Authorization", "X-Token"},
 	}))
 
 	// 设置路由
