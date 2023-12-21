@@ -74,12 +74,6 @@ func Logout(c *gin.Context) {
 		return
 	}
 
-	// 可选：将 token 加入黑名单
-	// ...
-
-	// 可选：记录注销事件到数据库或日志系统
-	// ...
-
 	// 发送成功响应
 	c.JSON(http.StatusOK, gin.H{"code": 20000, "data": "success"})
 }
