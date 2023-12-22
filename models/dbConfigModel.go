@@ -9,4 +9,7 @@ type Config struct {
 		DBName   string `json:"dbname"`
 		Charset  string `json:"charset"`
 	} `json:"database"`
+	AI struct {
+		Config string `json:"config"`
+	} `json:"ai"`
 }

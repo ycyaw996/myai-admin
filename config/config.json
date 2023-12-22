@@ -6,5 +6,8 @@
     "password": "ycyawCOM996.",
     "dbname": "myai_admin",
     "charset": "utf8"
+  },
+  "ai": {
+    "config": "./config/config.yaml"
   }
 }
